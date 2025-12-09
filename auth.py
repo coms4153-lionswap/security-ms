@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 SECRET_KEY = "LION_SWAP_GOAT_IS_THE_KEY"   
 ALGO = "HS256"
-IDENTITY_SERVICE_URL = "https://ms1-identity-157498364441.us-east1.run.app"  
+IDENTITY_SERVICE_URL = "https://ms1-identity-157498364441.us-east1.run.app/users"  
 
 def login(google_access_token: str):
     # 1. Verify google access token
