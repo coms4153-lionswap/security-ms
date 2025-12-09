@@ -24,7 +24,7 @@ def login(google_access_token: str):
     if not email:
         raise HTTPException(400, "Google token missing email")
 
-    # 2. Query your Users table
+
     query = text("""
         SELECT user_id, uni, student_name, credibility_score, avatar_url
         FROM Users
@@ -41,13 +41,17 @@ def login(google_access_token: str):
 
     # 3. Create your internal JWT
     now = datetime.utcnow()
+    #set yuting user account to admin others are user
+    role = "admin" if user_id == 1 else "user"
+
     payload = {
-        "sub": uni,                        # unique ID inside your platform
+        "user_id": user_id,
+        "sub": uni,                  
         "email": email,
         "name": student_name,
         "credibility": float(cred_score),
         "avatar": avatar,
-        "role": "user",                     # 如果你没有 roles table，这里写死 "user"
+        "role": role,
         "iat": int(now.timestamp()),
         "exp": int((now + timedelta(hours=24)).timestamp())
     }
