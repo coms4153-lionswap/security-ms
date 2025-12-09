@@ -13,7 +13,7 @@ ALGO = "HS256"
 
 @app.post("/security/login", response_model=LoginResponse)
 def login_route(request: LoginRequest):
-    return login(request.email, request.password)
+     return login(request.google_access_token)
 
 @app.post("/security/decode")
 def decode_token(token: str):

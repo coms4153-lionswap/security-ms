@@ -1,10 +1,12 @@
+import os
+
 from sqlalchemy import create_engine
 
-DB_HOST = "34.73.98.63"      # 你的 MySQL VM 的 external IP
-DB_USER = "admin"
-DB_PASSWORD = "12345abc"
-DB_NAME = "lionswap"         # 如果不是这个请告诉我
-DB_PORT = "3306"
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 
 DATABASE_URL = (
     f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
