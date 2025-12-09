@@ -2,12 +2,11 @@ import requests
 from jose import jwt
 from fastapi import HTTPException
 from datetime import datetime, timedelta
-from database import get_connection
-from sqlalchemy import text
+
 
 SECRET_KEY = "LION_SWAP_GOAT_IS_THE_KEY"   
 ALGO = "HS256"
-IDENTITY_SERVICE_URL = "https://ms1-identity-157498364441.us-east1.run.app/"  
+IDENTITY_SERVICE_URL = "https://ms1-identity-157498364441.us-east1.run.app"  
 
 def login(google_access_token: str):
     # 1. Verify google access token
