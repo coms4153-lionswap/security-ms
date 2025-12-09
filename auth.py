@@ -24,9 +24,10 @@ def login(google_access_token: str):
     if not email:
         raise HTTPException(400, "Google token missing email")
 
+    final_url = f"{IDENTITY_SERVICE_URL}/{email}"
 
     try:
-        user_resp = requests.get(IDENTITY_SERVICE_URL, params={"email": email}, timeout=5)
+        user_resp = requests.get(final_url, timeout=5)
     except Exception:
         raise HTTPException(500, "Identity service unavailable")
 
